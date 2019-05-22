@@ -1,0 +1,43 @@
+<div class="container main-container">
+    <app-table-view #tableView [items]="items" [columns]="columns" [detailTemplate]="detailTemplate">
+
+    </app-table-view>
+    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template #orderIdCellTemplate>
+        <div class="row-container">
+            <div>
+                <div *ngIf="expanded" class="caret-container expanded" (click)="toggleExpandRow(row)">
+                    <i class="fas fa-caret-down"></i>
+                </div>
+                <div *ngIf="!expanded" class="caret-container not-expanded" (click)="toggleExpandRow(row)">
+                    <i class="fas fa-caret-right"></i>
+                </div>
+            </div>
+            <div>
+                {{ row.orderId }}
+            </div>
+        </div>
+    </ng-template>
+    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template #orderNumberCellTemplate>
+        <div class="order-number">
+            <div>
+                {{ row.orderNumber }}
+            </div>
+
+            <div class="order-icon">
+                <i class="fas fa-arrow-right" [routerLink]="['/order/detail', row.orderId]" routerLinkActive="router-link-active"></i>
+            </div>
+            <div class="order-icon" (click)="toggleExpandRow(row)">
+                <i class="fas fa-trash"></i>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #detailTemplate let-row="row">
+        <app-table-view class="datail-table" [items]="row.orderDetails" [columns]="detailColumns"></app-table-view>
+    </ng-template>
+    <div class="paginator-container">
+        <mat-paginator [length]="numberOfRecords" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="changePage($event)">
+        </mat-paginator>
+    </div>
+
+</div>

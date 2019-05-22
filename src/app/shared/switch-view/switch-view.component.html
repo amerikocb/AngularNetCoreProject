@@ -1,0 +1,20 @@
+<div class="switch">
+    <div class="switch_header">
+        <div class="switcher">
+            <button class="mode-select-button" mat-button id="tableMode" (click)="isCardViewVisible = false;" [ngClass]="{'mode-selected': !isCardViewVisible}" mapTooltip="Table" matTooltipPosition="above" aria-label="table">
+                <i class="fas fa-list"></i>
+            </button>
+            <button class="mode-select-button" mat-button id="cardMode" (click)="isCardViewVisible = true;" [ngClass]="{'mode-selected': isCardViewVisible}" mapTooltip="Card" matTooltipPosition="above" aria-label="card">
+            <i class="fas fa-id-card"></i>
+            </button>
+        </div>
+    </div>
+    <div>
+        <div *ngIf="!isCardViewVisible" [@leftToRightAnimation]="!isCardViewVisible">
+            <ng-container *ngTemplateOutlet="templates.get(getTableKey()); context:{$implicit: item}"></ng-container>
+        </div>
+        <div *ngIf="isCardViewVisible" [@rightToLeftAnimation]="isCardViewVisible">
+            <ng-container *ngTemplateOutlet="templates.get(getCardKey()); context:{$implicit: item}"></ng-container>
+        </div>
+    </div>
+</div>
