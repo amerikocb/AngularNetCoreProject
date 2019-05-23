@@ -1,7 +1,11 @@
+@import '../../shared/responsive-breakpoints.scss';
 .new-customer-form-field {
     width: 100%;
     padding-left: 10px;
-    @media (max-width: 767px) {
+    // @media (max-width: 767px) {
+    //     padding-left: 0px;
+    // }
+    @include respond-to(xs-screen) {
         padding-left: 0px;
     }
 }
@@ -9,7 +13,11 @@
 .element-form {
     display: flex;
     align-items: center;
-    @media (max-width: 767px) {
+    // @media (max-width: 767px) {
+    //     flex-direction: column;
+    //     align-items: baseline;
+    // }
+    @include respond-to(xs-screen) {
         flex-direction: column;
         align-items: baseline;
     }

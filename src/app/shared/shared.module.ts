@@ -7,9 +7,10 @@ import { TableViewComponent } from './table-view/table-view.component';
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 import { SwitchViewComponent } from './switch-view/switch-view.component';
 import { MaterialModule } from '../material.module';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
-  declarations: [NavBarComponent, NotFoundComponent, TableViewComponent, SwitchViewComponent],
+  declarations: [NavBarComponent, NotFoundComponent, TableViewComponent, SwitchViewComponent, SpinnerComponent],
   imports: [
     CommonModule, 
     RouterModule, 
@@ -20,7 +21,8 @@ import { MaterialModule } from '../material.module';
     NavBarComponent,
     TableViewComponent,
     NotFoundComponent,
-    SwitchViewComponent
+    SwitchViewComponent,
+    SpinnerComponent
   ]
   // declarations: [NavBarComponent]
 })

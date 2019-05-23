@@ -1,4 +1,5 @@
 <div class="container main-container">
+    <app-spinner *ngIf="isVisible"></app-spinner>
     <div>
         <input class="form-control" type="search" [formControl]="searchControl">
     </div>

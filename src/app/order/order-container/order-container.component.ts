@@ -18,6 +18,7 @@ export class OrderContainerComponent implements OnInit, AfterViewInit {
   items: OrderList[] = [];
   public columns: object[] = [];
   public detailColumns: object[] = [];
+  isVisible: boolean = true;
   @ViewChild("tableView") tableView: TableViewComponent<any>;
   @ViewChild("orderIdCellTemplate") private orderIdCellTemplate: TemplateRef<any>
   @ViewChild("orderNumberCellTemplate") private orderNumberCellTemplate: TemplateRef<any>
@@ -40,8 +41,10 @@ export class OrderContainerComponent implements OnInit, AfterViewInit {
   }
 
   getOrders(page:number, rows:number):void{
+    this.isVisible = true;
     this.service.getOrderList(page, rows)
       .subscribe(Response => {
+        this.isVisible = false;
         this.items = Response;
         this.numberOfRecords = Response[0].totalRecords;
       })

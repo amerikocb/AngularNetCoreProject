@@ -1,4 +1,5 @@
 <div class="container main-container">
+    <app-spinner *ngIf="isVisible"></app-spinner>
     <app-table-view #tableView [items]="items" [columns]="columns" [detailTemplate]="detailTemplate">
 
     </app-table-view>

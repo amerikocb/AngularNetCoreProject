@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { DetailCustomerComponent } from './detail-customer/detail-customer.component';
 import { MaterialModule } from '../material.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [CustomerListComponent, NewCustomerComponent, EditCustomerComponent, DetailCustomerComponent], 
@@ -16,7 +17,8 @@ import { MaterialModule } from '../material.module';
     FormsModule,
     ReactiveFormsModule,
     CustomerRoutingModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ]
 })
 export class CustomerModule { }

@@ -1,49 +1,52 @@
-<div class="loginContainer main-container">
-    <div class="d-flex justify-content-center h-100">
-        <div class="card">
-            <div class="card-header">
-                <h3>Acceso</h3>
-                <!-- <div class="d-flex justify-content-end social_icon">
-                    <span><i class="fab fa-facebook-square"></i></span>
-                    <span><i class="fab fa-google-plus-square"></i></span>
-                    <span><i class="fab fa-twitter-square"></i></span>
-                </div> -->
-            </div>
-            <div class="card-body">
-                <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="correo" formControlName="email" [ngClass]="{'is-invalid': (loginForm.get('email').errors?.required || loginForm.get('email').errors?.pattern) && loginForm.get('email').touched}">
-                        <div class="invalid-feedback" *ngIf="loginForm.get('email').errors?.required">Campo requerido</div>
-                        <div class="invalid-feedback" *ngIf="loginForm.get('email').errors?.pattern">Email inválido</div>
-
-                    </div>
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-key"></i></span>
-                        </div>
-                        <input type="password" class="form-control" placeholder="contraseña" formControlName="password" [ngClass]="{'is-invalid': (loginForm.get('password').errors?.minlength || loginForm.get('password').errors?.maxlenght || loginForm.get('password').errors?.required) && loginForm.get('password').touched}">
-                        <div class="invalid-feedback" *ngIf="loginForm.get('password').errors?.required">Campo requerido</div>
-                        <div class="invalid-feedback" *ngIf="loginForm.get('password').errors?.minlength">Se requieren al menos 2 caracteres</div>
-                        <div class="invalid-feedback" *ngIf="loginForm.get('password').errors?.maxlength">Solo se admiten como máximo 50 caracteres</div>
-                    </div>
-                    <div class="row align-items-center remember">
-                        <input type="checkbox ">Recordarme
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Login" class="btn float-right login_btn" [disabled]="loginForm.invalid">
-                    </div>
-                    <div *ngIf="loginError">{{ loginError }}</div>
-                </form>
-            </div>
-            <div class="card-footer ">
-                <div class="d-flex justify-content-center links ">
-                    ¿No tienes una cuenta?<a href="# ">Regístrate</a>
+<div class="container main-container">
+    <app-spinner *ngIf="isVisible"></app-spinner>
+    <div class="loginContainer">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Acceso</h3>
+                    <!-- <div class="d-flex justify-content-end social_icon">
+                            <span><i class="fab fa-facebook-square"></i></span>
+                            <span><i class="fab fa-google-plus-square"></i></span>
+                            <span><i class="fab fa-twitter-square"></i></span>
+                        </div> -->
                 </div>
-                <div class="d-flex justify-content-center ">
-                    <a href="# ">Olvidé mi contraseña</a>
+                <div class="card-body">
+                    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="correo" formControlName="email" [ngClass]="{'is-invalid': (loginForm.get('email').errors?.required || loginForm.get('email').errors?.pattern) && loginForm.get('email').touched}">
+                            <div class="invalid-feedback" *ngIf="loginForm.get('email').errors?.required">Campo requerido</div>
+                            <div class="invalid-feedback" *ngIf="loginForm.get('email').errors?.pattern">Email inválido</div>
+
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" class="form-control" placeholder="contraseña" formControlName="password" [ngClass]="{'is-invalid': (loginForm.get('password').errors?.minlength || loginForm.get('password').errors?.maxlenght || loginForm.get('password').errors?.required) && loginForm.get('password').touched}">
+                            <div class="invalid-feedback" *ngIf="loginForm.get('password').errors?.required">Campo requerido</div>
+                            <div class="invalid-feedback" *ngIf="loginForm.get('password').errors?.minlength">Se requieren al menos 2 caracteres</div>
+                            <div class="invalid-feedback" *ngIf="loginForm.get('password').errors?.maxlength">Solo se admiten como máximo 50 caracteres</div>
+                        </div>
+                        <div class="row align-items-center remember">
+                            <input type="checkbox ">Recordarme
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Login" class="btn float-right login_btn" [disabled]="loginForm.invalid">
+                        </div>
+                        <div *ngIf="loginError">{{ loginError }}</div>
+                    </form>
+                </div>
+                <div class="card-footer ">
+                    <div class="d-flex justify-content-center links ">
+                        ¿No tienes una cuenta?<a href="# ">Regístrate</a>
+                    </div>
+                    <div class="d-flex justify-content-center ">
+                        <a href="# ">Olvidé mi contraseña</a>
+                    </div>
                 </div>
             </div>
         </div>

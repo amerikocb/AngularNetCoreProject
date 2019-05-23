@@ -1,30 +1,33 @@
-<div class="customer-container">
-    <div class="newCustomer">
-        <button mat-raised-button color="primary" (click)="newCustomer()">New Customer</button>
-    </div>
-    <div>
-        <div class="customer-card" *ngFor="let customer of customers">
-            <mat-card>
-                <mat-card-header>
-                    <div mat-card-avatar class="customer-header-image"></div>
-                    <mat-card-title>{{ customer.firstName }}</mat-card-title>
-                    <mat-card-subtitle>{{ customer.lastName }}</mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content>
-                    <p>
-                        {{ customer.country }}
-                    </p>
-                </mat-card-content>
-                <mat-card-actions>
-                    <button mat-button (click)="editCustomer(customer.id)">Editar</button>
-                    <button mat-button (click)="viewDetails(customer.id)">Details</button>
-                </mat-card-actions>
-            </mat-card>
+<div class="container main-container">
+    <app-spinner *ngIf="isVisible"></app-spinner>
+    <div class="customer-container">
+        <div class="newCustomer">
+            <button mat-raised-button color="primary" (click)="newCustomer()">New Customer</button>
         </div>
-    </div>
-    <div class="paginator-container">
-        <mat-paginator [length]="numberOfRecords" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="changePage($event)">
-        </mat-paginator>
-    </div>
+        <div>
+            <div class="customer-card" *ngFor="let customer of customers">
+                <mat-card>
+                    <mat-card-header>
+                        <div mat-card-avatar class="customer-header-image"></div>
+                        <mat-card-title>{{ customer.firstName }}</mat-card-title>
+                        <mat-card-subtitle>{{ customer.lastName }}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            {{ customer.country }}
+                        </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-button (click)="editCustomer(customer.id)">Editar</button>
+                        <button mat-button (click)="viewDetails(customer.id)">Details</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+        <div class="paginator-container">
+            <mat-paginator [length]="numberOfRecords" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="changePage($event)">
+            </mat-paginator>
+        </div>
 
+    </div>
 </div>
