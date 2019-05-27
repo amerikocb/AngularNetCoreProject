@@ -35,6 +35,11 @@
 
 .detail-table {
      ::ng-deep .table-results-base {
-        min-height: auto !important;
+        min-height: 500px !important;
     }
+}
+
+.table-results-base[_ngcontent-dyv-c4] {
+    min-height: auto !important;
+    position: relative;
 }

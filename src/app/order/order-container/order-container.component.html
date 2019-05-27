@@ -34,7 +34,9 @@
     </ng-template>
 
     <ng-template #detailTemplate let-row="row">
-        <app-table-view class="datail-table" [items]="row.orderDetails" [columns]="detailColumns"></app-table-view>
+        <div class="datail-table">
+            <app-table-view [items]="row.orderDetails" [columns]="detailColumns"></app-table-view>
+        </div>
     </ng-template>
     <div class="paginator-container">
         <mat-paginator [length]="numberOfRecords" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="changePage($event)">

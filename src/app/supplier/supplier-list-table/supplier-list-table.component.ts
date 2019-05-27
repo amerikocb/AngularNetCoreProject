@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { supplier } from '../models/supplier';
+import { Supplier } from '../models/Supplier';
 
 @Component({
   selector: 'app-supplier-list-table',
@@ -8,7 +8,7 @@ import { supplier } from '../models/supplier';
 })
 export class SupplierListTableComponent implements OnInit {
 
-  @Input() items:supplier[] = [];
+  @Input() items: Supplier[] = [];
   public columns: object[] = [];
   constructor() { }
 

@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { supplier } from '../models/supplier';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Supplier } from '../models/Supplier';
 
 @Component({
   selector: 'app-supplier-list-card',
@@ -8,10 +8,11 @@ import { supplier } from '../models/supplier';
 })
 export class SupplierListCardComponent implements OnInit {
 
-  @Input() items: supplier[] = [];
-  constructor() { }
+  @Input() items: Supplier[] = [];
+  constructor(private ref:ChangeDetectorRef) { }
 
   ngOnInit() {
+    // this.ref.markForCheck();
   }
 
 }

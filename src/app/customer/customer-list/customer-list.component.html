@@ -1,11 +1,11 @@
 <div class="container main-container">
-    <app-spinner *ngIf="isVisible"></app-spinner>
+    <app-spinner *ngIf="isLoading$ | async"></app-spinner>
     <div class="customer-container">
         <div class="newCustomer">
             <button mat-raised-button color="primary" (click)="newCustomer()">New Customer</button>
         </div>
         <div>
-            <div class="customer-card" *ngFor="let customer of customers">
+            <div class="customer-card" *ngFor="let customer of customers$ | async">
                 <mat-card>
                     <mat-card-header>
                         <div mat-card-avatar class="customer-header-image"></div>
@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="paginator-container">
-            <mat-paginator [length]="numberOfRecords" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="changePage($event)">
+            <mat-paginator [length]="numberOfRecords$ | async" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="changePage($event)">
             </mat-paginator>
         </div>
 

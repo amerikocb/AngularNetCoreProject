@@ -14,6 +14,8 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthHttpInterceptor } from './auth/AuthHttpInterceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { StoreModule } from "@ngrx/store";
+import { EffectsModule } from "@ngrx/effects";
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { MaterialModule } from './material.module';
     FormsModule, ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    StoreModule.forRoot({},{}),
+    EffectsModule.forRoot([])
   ],
   providers: [AuthService, AuthGuard,{
     provide: HTTP_INTERCEPTORS,

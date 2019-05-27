@@ -1,19 +1,20 @@
-import { Component, OnInit, ViewChild, TemplateRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef, AfterViewInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { SupplierService } from './supplier.service';
 import { SwitchViewComponent } from '../shared/switch-view/switch-view.component';
-import { supplier } from './models/supplier';
+import { Supplier } from './models/Supplier';
 import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
 @Component({
   selector: 'app-supplier-container',
   templateUrl: './supplier-container.component.html',
   styleUrls: ['./supplier-container.component.scss'],
-  providers: [SupplierService]
+  providers: [SupplierService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SupplierContainerComponent implements OnInit, AfterViewInit {
 
-  items: supplier[] = [];
+  items: Supplier[] = [];
   @ViewChild("cardViewTemplate") private cardViewTemplate: TemplateRef<any>;
   @ViewChild("tableViewTemplate") private tableViewTemplate: TemplateRef<any>;
   templates: Map<string, TemplateRef<any>> = new Map<string, TemplateRef<any>>();
@@ -37,6 +38,7 @@ export class SupplierContainerComponent implements OnInit, AfterViewInit {
     this.templates.set(SwitchViewComponent.CARD_KEY, this.cardViewTemplate);
     this.templates.set(SwitchViewComponent.TABLE_KEY, this.tableViewTemplate);
     this.ref.detectChanges();
+    this.ref. markForCheck();
   }
 
   getSuppliers(page:number, rows:number, searchTerm: string = ''):void{
@@ -45,6 +47,7 @@ export class SupplierContainerComponent implements OnInit, AfterViewInit {
     .subscribe(response =>{
       this.items = response;
       this.isVisible = false;
+      this.ref.markForCheck();
     });
   }
 
